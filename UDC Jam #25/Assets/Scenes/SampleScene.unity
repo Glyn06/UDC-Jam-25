@@ -454,3 +454,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 5
   rb: {fileID: 1713971334}
+  cam: {fileID: 963194227}
