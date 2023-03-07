@@ -5,7 +5,6 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
-    [SerializeField] private bool DEBUGTAKEDAMAGE = false;
 
     private int currentHealth;
 
@@ -21,12 +20,6 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
-        if (DEBUGTAKEDAMAGE)
-        {
-            TakeDamage(10);
-            DEBUGTAKEDAMAGE = false;
-        }
-
         if (currentHealth <= 0)
         {
             gameObject.SetActive(false);
