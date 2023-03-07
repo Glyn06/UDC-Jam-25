@@ -20,7 +20,7 @@ public class PrefabSpawner : MonoBehaviour
 
     public void SpawnPrefabRandomQuantity(int maxQuantity)
     {
-        int quantity = Random.Range(0, maxQuantity);
+        int quantity = Random.Range(1, maxQuantity);
 
         SpawnPrefab(quantity);
     }
