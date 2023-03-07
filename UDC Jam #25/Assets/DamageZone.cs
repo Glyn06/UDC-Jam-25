@@ -32,8 +32,10 @@ public class DamageZone : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //Fix: Si no tiene health, da null;
-        toDamage.Add(other.GetComponent<Health>());
+        Health health = other.GetComponent<Health>();
+
+        if (health != null)
+            toDamage.Add(health);
     }
 
     private void OnTriggerExit2D(Collider2D other)
