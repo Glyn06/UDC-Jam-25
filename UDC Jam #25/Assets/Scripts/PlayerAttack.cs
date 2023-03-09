@@ -5,15 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] private PlayerInputActions inputActions;
     [SerializeField] private GameObject sword;
-
-    private InputAction attack;
-
-    private void Awake()
-    {
-        inputActions = new PlayerInputActions();
-    }
 
     private void Attack(InputAction.CallbackContext context)
     {
@@ -21,16 +13,13 @@ public class PlayerAttack : MonoBehaviour
             sword.SetActive(true);
     }
 
-    private void OnEnable()
+    private void Start()
     {
-        attack = inputActions.Player.Attack;
-        attack.performed += Attack;
-        attack.Enable();
+        PlayerInputManager.instance.attack.performed += Attack;
     }
 
     private void OnDisable()
     {
-        attack.performed -= Attack;
-        attack.Disable();
+        PlayerInputManager.instance.attack.performed -= Attack;
     }
 }

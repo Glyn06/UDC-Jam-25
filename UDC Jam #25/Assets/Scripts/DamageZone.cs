@@ -6,6 +6,8 @@ public class DamageZone : MonoBehaviour
 {
     [SerializeField] private int damageAmount = 1;
     [SerializeField] private float damageTick = 0.5f;
+    [SerializeField] private bool destroyAfterFirstTick = false;
+    [SerializeField] private Collider2D damageCollider;
 
     private List<Health> toDamage;
     private float timer;
@@ -28,6 +30,9 @@ public class DamageZone : MonoBehaviour
 
             timer = 0;
         }
+
+        if (destroyAfterFirstTick == true)
+            Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -41,5 +46,15 @@ public class DamageZone : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         toDamage.Remove(other.GetComponent<Health>());
+    }
+
+    private void OnEnable()
+    {
+        damageCollider.enabled = true;
+    }
+
+    private void OnDisable()
+    {
+        damageCollider.enabled = false;
     }
 }
