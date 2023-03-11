@@ -23,6 +23,8 @@ public class Bomb : Item
     {
         damageZone.enabled = true;
         Instantiate(explotionPrefab, transform.position, transform.rotation);
+
+        Destroy(gameObject);
     }
 
     public override void Use(Vector2 direction)

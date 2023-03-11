@@ -51,7 +51,6 @@ public class Enemy : MonoBehaviour
             case EnemyState.Attacking:
                 Attack();
                 CheckAttackDistance();
-                //FindTarget();
                 break;
             default:
                 break;
@@ -136,6 +135,10 @@ public class Enemy : MonoBehaviour
 
     private void Attack()
     {
+        Vector2 directionToPlayer = (playerObj.transform.position - transform.position).normalized;
+        float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
+        rb.MoveRotation(angle);
+
         if (weapon != null)
             weapon.SetActive(true);
     }
