@@ -239,15 +239,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialState: 0
-  patrolingPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  movementSpeed: 1
-  detectionRange: 2
+  patrolingPoints: []
+  movementSpeed: 3
+  detectionRange: 10
   playerObj: {fileID: 0}
   attackDistance: 0.8
   weapon: {fileID: 2328517960290992972}
+  projectileSpawner: {fileID: 0}
 --- !u!114 &2328517959589110537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,10 +258,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 150990c75bfc2c64fa136b2bddf7d75b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 1
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2328517959589110533}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: Death
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!61 &2328517959589110538
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -362,6 +372,8 @@ MonoBehaviour:
   damageTick: 0.01
   destroyAfterFirstCollision: 0
   damageCollider: {fileID: 2328517960290993072}
+  isZone: 0
+  ignoreEnemy: 0
 --- !u!61 &2328517960290993072
 BoxCollider2D:
   m_ObjectHideFlags: 0

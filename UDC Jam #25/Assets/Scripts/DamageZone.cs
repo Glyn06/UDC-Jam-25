@@ -8,6 +8,8 @@ public class DamageZone : MonoBehaviour
     [SerializeField] private float damageTick = 0.5f;
     [SerializeField] private bool destroyAfterFirstCollision = false;
     [SerializeField] private Collider2D damageCollider;
+    [SerializeField] private bool isZone = false;
+    [SerializeField] private bool ignoreEnemy = false;
 
     private List<Health> toDamage;
     private float timer;
@@ -34,9 +36,24 @@ public class DamageZone : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (ignoreEnemy)
+        {
+            Enemy enemy = other.GetComponent<Enemy>();
+
+            if (enemy != null)
+            {
+                return;
+            }
+        }
+
         Health health = other.GetComponent<Health>();
 
-        if (health != null)
+        if (health != null && isZone == true)
+        {
+            toDamage.Add(health);
+        }
+
+        if (health != null && isZone == false)
         {
             health.TakeDamage(damageAmount);
 

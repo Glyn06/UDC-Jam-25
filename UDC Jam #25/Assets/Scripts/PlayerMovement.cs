@@ -16,6 +16,14 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 playerPos;
     private Vector2 facingDirection;
 
+    private void Awake()
+    {
+        if (cam == null)
+        {
+            cam = Camera.main;
+        }
+    }
+
     private void Update()
     {
         moveDirection = PlayerInputManager.instance.move.ReadValue<Vector2>();

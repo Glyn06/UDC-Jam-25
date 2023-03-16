@@ -113,6 +113,8 @@ MonoBehaviour:
   damageTick: 0.1
   destroyAfterFirstCollision: 1
   damageCollider: {fileID: 7050197535815107704}
+  isZone: 0
+  ignoreEnemy: 1
 --- !u!1 &7050197536009588720
 GameObject:
   m_ObjectHideFlags: 0

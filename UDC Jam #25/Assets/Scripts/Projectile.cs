@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour
 
     private void CheckReachedTarget()
     {
-        if (Vector2.Distance(transform.position, targetPos) < 0.1f)
+        if (Vector2.Distance(transform.position, targetPos) > 50)
             Destroy(gameObject);
     }
 }

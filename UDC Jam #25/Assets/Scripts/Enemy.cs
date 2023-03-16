@@ -29,6 +29,22 @@ public class Enemy : MonoBehaviour
     [Header("Attacking")]
     [SerializeField] private float attackDistance = 1f;
     [SerializeField] private GameObject weapon;
+    [SerializeField] private ProjectileSpawner projectileSpawner;
+
+    public void SetPlayerObj(GameObject obj)
+    {
+        playerObj = obj;
+
+        if (projectileSpawner != null)
+        {
+            projectileSpawner.SetTarget(playerObj.transform);
+        }
+    }
+
+    public void Death()
+    {
+        Manager.instace.EnemyKilled();
+    }
 
     private void Awake()
     {
